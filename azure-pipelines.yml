@@ -21,7 +21,17 @@ steps:
 - script: npx ng lint
   displayName: 'Code Analysis'
 
-- script: npx ng build --prod
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'ayesa-sonar'
+    organization: 'marcelabula-angular'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'ayesa-sonar'
+    cliProjectName: 'ng-azure-devops'
+    cliSources: '.'
+
+- script: npx ng build --base-href /helloworld/
   displayName: 'Build'
 
 - script: npx ng test --watch=false --codeCoverage=true
@@ -40,6 +50,12 @@ steps:
     codeCoverageTool: 'Cobertura'
     summaryFileLocation: '$(Build.SourcesDirectory)/coverage/ng-azure-devops/cobertura-coverage.xml'
   displayName: 'Publish Code Coverage Results'
+
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 
 - task: PublishBuildArtifacts@1
   inputs:
