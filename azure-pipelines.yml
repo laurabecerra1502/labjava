@@ -23,11 +23,11 @@ steps:
 
 - task: SonarCloudPrepare@1
   inputs:
-    SonarCloud: 'ayesa-sonar'
-    organization: 'marcelabula-angular'
+    SonarCloud: 'sonar-cloud'
+    organization: 'demo-devsecops'
     scannerMode: 'CLI'
     configMode: 'manual'
-    cliProjectKey: 'ayesa-sonar'
+    cliProjectKey: 'laboratorio'
     cliProjectName: 'ng-azure-devops'
     cliSources: '.'
 
