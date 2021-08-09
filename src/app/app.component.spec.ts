@@ -30,6 +30,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('ng-azure-devop app is running AGILE CONSULTING!');
+    expect(compiled.querySelector('.content span').textContent).toContain('ng-azure-devops app is running AGILE CONSULTING!');
   });
 });
