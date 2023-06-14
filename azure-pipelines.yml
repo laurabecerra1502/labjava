@@ -21,16 +21,6 @@ steps:
 - script: npx ng lint
   displayName: 'Code Analysis'
 
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'DAPC_AndersonAlexisRuales'
-    organization: 'dapcandersonalexisruales'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'dapc_andersonalexisruales'
-    cliProjectName: 'dapc_andersonalexisruales'
-    cliSources: '.'
-
 - script: npx ng build --base-href /helloworld/
   displayName: 'Build'
 
@@ -50,12 +40,6 @@ steps:
     codeCoverageTool: 'Cobertura'
     summaryFileLocation: '$(Build.SourcesDirectory)/coverage/ng-azure-devops/cobertura-coverage.xml'
   displayName: 'Publish Code Coverage Results'
-
-- task: SonarCloudAnalyze@1
-
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
 
 - task: PublishBuildArtifacts@1
   inputs:
